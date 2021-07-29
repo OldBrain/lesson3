@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New product</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Добавить товар</h2>
+    <form method="post" th:action="@{'/create'}">
+       <div class="mb-3">
+            <label for="product_title" class="form-label">Товар</label>
+            <input type="text" name="title" class="form-control" id="product_title">
+        </div>
+        <div class="mb-3">
+            <label for="product_price" class="form-label">Цена(руб.)</label>
+            <input type="number" name="price" class="form-control" id="product_price">
+        </div>
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+    </form>
+    <p></p>
+    <a th:href="@{/all_products}" class="btn btn-info"> Все тогвары</a>
+</div>
+</body>
+</html>
