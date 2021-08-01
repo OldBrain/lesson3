@@ -11,29 +11,30 @@
 </head>
 <body>
 <div class="container">
-<table class="table table-success table-striped">
-    <thead>
-    <td>Id</td>
-    <td>Описание</td>
-    <td>Цена(руб.)</td>
-    <td></td>
-    <tr></tr>
-    </thead>
-    <tbody>
-    <tr th:each="p : ${products}">
-        <td th:text="${p.id}"></td>
-        <td th:text="${p.title}"></td>
-        <td th:text="${p.price}"></td>
-        <td>
-            <a th:href="@{'/product/' + ${p.id}}" class="btn btn-primary">Инфо</a>
-        </td>
-    </tr>
-    <a th:href="@{/}" class="btn btn-info"> На главную</a>
-    <a th:href="@{/create}" class="btn btn-info"> Добавить новый товар</a>
+    <table class="table table-success table-striped">
+        <thead>
+        <td>Id</td>
+        <td>Описание</td>
+        <td>Цена(руб.)</td>
+        <td></td>
+        <tr></tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${products}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.title}"></td>
+            <td th:text="${p.price}"></td>
+            <td>
+                <a th:href="@{'/product/' + ${p.id}}" class="btn btn-primary">Инфо</a>
+            </td>
+        </tr>
+        <a th:href="@{/}" class="btn btn-info"> На главную</a>
+        <a th:href="@{/create}" class="btn btn-info"> Добавить новый товар</a>
+        <a th:href="@{/edit_price}" class="btn btn-info"> Изменить цену</a>
 
-    </tbody>
-</table>
-<span th:text="${'Всего товаров: '+products.size}"/>
+        </tbody>
+    </table>
+    <span th:text="${'Всего товаров: '+products.size}"/>
 </div>
 </body>
 </html>
