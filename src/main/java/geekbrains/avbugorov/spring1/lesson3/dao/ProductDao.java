@@ -3,27 +3,16 @@ package geekbrains.avbugorov.spring1.lesson3.dao;
 import geekbrains.avbugorov.spring1.lesson3.model.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class ProductDao {
-    SessionFactory sessionFactory;
-
-    public ProductDao() {
-
-    }
+    private final SessionFactory sessionFactory;
 
     public ProductDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-    }
-
-    public void initProductEntityAndSave(List<Product> productList) {
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        for (Product item : productList) {
-            session.save(item);
-        }
-        session.getTransaction().commit();
     }
 
     public List<Product> getAll() {
@@ -42,6 +31,7 @@ public class ProductDao {
         session.save(product);
         session.getTransaction().commit();
     }
+
     public void update(Product product) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -64,5 +54,7 @@ public class ProductDao {
         session.delete(product);
         session.getTransaction().commit();
     }
+
+
 
 }
