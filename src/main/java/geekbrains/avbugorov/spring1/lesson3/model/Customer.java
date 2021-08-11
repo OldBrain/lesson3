@@ -14,22 +14,20 @@ public class Customer {
     @Column(name = "customer_name")
     private String name;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Order> customers;
+    @OneToMany(mappedBy = "customerOrder",fetch = FetchType.EAGER)
+    private List<Order> listOrder;
 
     public Customer() {
     }
 
-    public List<Order> getCustomers() {
-        return customers;
+    public List<Order> getListOrder() {
+        return listOrder;
     }
 
-    public List<Order> getOrderList() {
-        return getCustomers();
-    }
 
-    public void setCustomers(List<Order> customers) {
-        this.customers = customers;
+
+    public void setListOrder(List<Order> customers) {
+        this.listOrder = customers;
     }
 
     public void setId(Long id) {

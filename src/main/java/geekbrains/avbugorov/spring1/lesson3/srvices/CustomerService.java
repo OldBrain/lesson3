@@ -25,7 +25,9 @@ public class CustomerService {
     public Customer returnCustomerById(Long customerId) {
         return customerDao.returnCustomerById(customerId);
     }
-    public List<Order> getOrderList(Long id) {
-        return customerDao.getOrderList(id);
+
+    public List<Order> getOrderListByCustomerId(Long customerId) {
+        return customerDao.getOrderListByCustomerId(customerId);
     }
+
 }

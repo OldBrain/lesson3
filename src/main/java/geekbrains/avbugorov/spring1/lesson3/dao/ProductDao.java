@@ -1,5 +1,6 @@
 package geekbrains.avbugorov.spring1.lesson3.dao;
 
+import geekbrains.avbugorov.spring1.lesson3.model.Order;
 import geekbrains.avbugorov.spring1.lesson3.model.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -55,6 +56,13 @@ public class ProductDao {
         session.getTransaction().commit();
     }
 
-
+    public List<Order> getOrderListByProductId(Long productId) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Product product = session.get(Product.class, productId);
+        List<Order> listOrder = product.getOrderListIdProduct();
+        session.getTransaction().commit();
+        return listOrder;
+    }
 
 }

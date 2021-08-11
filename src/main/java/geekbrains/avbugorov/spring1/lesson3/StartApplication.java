@@ -12,7 +12,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class StartApplication {
     public static void main(String[] args) {
         SpringApplication.run(StartApplication.class, args);
-//        ForHomework6 homework6 = new ForHomework6();
         System.out.println("Все запущено!");
 
     }

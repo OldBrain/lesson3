@@ -22,7 +22,7 @@ INSERT INTO customer (customer_name) VALUES ('Dany')
 
 
 
-CREATE TABLE IF NOT EXISTS order_list (id bigserial, order_date VARCHAR(10), customer_id bigint references customer(id), product_id bigint references product(id), product_price INTEGER, product_quantity INTEGER, PRIMARY KEY (id));
+CREATE TABLE IF NOT EXISTS order_list (id bigserial,order_date VARCHAR(10), customer_id bigint references customer(id), product_id bigint references product(id), product_price INTEGER, product_quantity INTEGER, PRIMARY KEY (id));
 INSERT INTO order_list(order_date, customer_id, product_id, product_price, product_quantity) VALUES ('10/03/2021',1,2,100,5);
 INSERT INTO order_list(order_date, customer_id, product_id, product_price, product_quantity) VALUES ('10/03/2021',1,1,100,5);
 INSERT INTO order_list(order_date, customer_id, product_id, product_price, product_quantity) VALUES ('10/03/2021',1,3,100,5);

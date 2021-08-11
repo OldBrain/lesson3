@@ -15,18 +15,18 @@ public class Product {
     @Column(name = "price")
     private Integer price;
 
-    @OneToMany(mappedBy = "product")
-    List<Order> orders;
+    @OneToMany(mappedBy = "productOrder", fetch = FetchType.EAGER)
+    List<Order> orderListIdProduct;
 
     public Product() {
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<Order> getOrderListIdProduct() {
+        return orderListIdProduct;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrderListIdProduct(List<Order> orders) {
+        this.orderListIdProduct = orders;
     }
 
     public Product(String title, Integer price) {
@@ -60,10 +60,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", price=" + price +
+        return  "id=" + id +
+                ", Наименование='" + title + '\'' +
+                ", цена сегодня=" + price +
                 '}';
     }
 }

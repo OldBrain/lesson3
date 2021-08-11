@@ -46,8 +46,15 @@ public class CustomerDao {
         return customer;
     }
 
-    public List<Order> getOrderList(Long customerId) {
-        return returnCustomerById(customerId).getOrderList();
+    public List<Order> getOrderListByCustomerId(Long customerId) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Customer customer = session.get(Customer.class, customerId);
+        List<Order> listOrder = customer.getListOrder();
+
+        session.getTransaction().commit();
+        return listOrder;
     }
+
 
 }

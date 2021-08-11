@@ -15,11 +15,11 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private Customer customerOrder;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product;
+    private Product productOrder;
 
     @Column(name = "product_price")
     private Integer price;
@@ -30,12 +30,12 @@ public class Order {
     public Order() {
     }
 
-    public Product getProduct() {
-        return product;
+    public Product getProductOrder() {
+        return productOrder;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductOrder(Product product) {
+        this.productOrder = product;
     }
 
     public String getOrder_date() {
@@ -70,23 +70,24 @@ public class Order {
         return id;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Customer getCustomerOrder() {
+        return customerOrder;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerOrder(Customer customer) {
+        this.customerOrder = customer;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", order_date='" + order_date + '\'' +
-                ", customer=" + customer +
-                ", product=" + product +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                '}';
+        return  "Заказ №=" + id +
+                ", Дата заказа ='" + order_date + '\'' +
+                ", Покупатель =" + customerOrder.getName() +"\n"+
+                ", Товар=" + productOrder +
+                ", Цена на момент покупки=" + price +
+                ", количество=" + quantity +
+                ", стоимость=" + quantity*price 
+                +"\n";
+
     }
 }

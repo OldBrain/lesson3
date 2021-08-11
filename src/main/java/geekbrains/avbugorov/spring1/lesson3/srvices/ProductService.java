@@ -2,6 +2,7 @@ package geekbrains.avbugorov.spring1.lesson3.srvices;
 
 import geekbrains.avbugorov.spring1.lesson3.StartApplication;
 import geekbrains.avbugorov.spring1.lesson3.dao.ProductDao;
+import geekbrains.avbugorov.spring1.lesson3.model.Order;
 import geekbrains.avbugorov.spring1.lesson3.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -41,5 +42,8 @@ public class ProductService {
         update(changeableProduct);
     }
 
+    public List<Order> getOrderListByProductId(Long productId) {
+        return productDao.getOrderListByProductId(productId);
+    }
 }
 
