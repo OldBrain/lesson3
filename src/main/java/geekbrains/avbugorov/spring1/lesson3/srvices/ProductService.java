@@ -1,7 +1,7 @@
-package geekbrains.avbugorov.spring1.lesson3.model.srvices;
+package geekbrains.avbugorov.spring1.lesson3.srvices;
 
 import geekbrains.avbugorov.spring1.lesson3.model.Product;
-import geekbrains.avbugorov.spring1.lesson3.model.repositories.ProductRepository;
+import geekbrains.avbugorov.spring1.lesson3.repositories.ProductRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +9,10 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    private ProductRepository productRepository;
+    private ProductRepositoryImpl productRepository;
 
     @Autowired
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepositoryImpl productRepository) {
         this.productRepository = productRepository;
     }
 
@@ -28,12 +28,19 @@ public class ProductService {
         productRepository.save(product);
     }
 
+    public void update(Product product) {
+        productRepository.update(product);
+    }
+
     public long getNextId() {
         return returnAll().size() + 1;
     }
 
     public void incrementPrise(Long id, Integer increment) {
-        returnProductById(id).setPrice(returnProductById(id).getPrice() + increment);
+        Product changeableProduct = returnProductById(id);
+        int price = changeableProduct.getPrice();
+        changeableProduct.setPrice(price + increment);
+        update(changeableProduct);
     }
 
 }
