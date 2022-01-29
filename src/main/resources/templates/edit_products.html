@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+<table class="table table-success table-striped">
+    <thead>
+    <td>Id</td>
+    <td>Описание</td>
+    <td></td>
+    <td>Цена(руб.)</td>
+    <td></td>
+    <td></td>
+    <tr></tr>
+    </thead>
+    <tbody>
+    <tr th:each="p : ${products}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.title}"></td>
+        <td>
+            <a th:href="@{'/edit_price?id=' + ${p.id}+'&increment=-1'}" class="btn btn-primary">-</a>
+        </td>
+
+        <td th:text="${p.price}"></td>
+        <td>
+            <a th:href="@{'/edit_price/?id=' + ${p.id}+'&increment=1'}" class="btn btn-primary">+</a>
+        </td>
+
+        <td>
+            <a th:href="@{'/product/' + ${p.id}}" class="btn btn-primary">Инфо</a>
+        </td>
+    </tr>
+    <a th:href="@{/}" class="btn btn-info"> На главную</a>
+    <a th:href="@{/create}" class="btn btn-info"> Добавить новый товар</a>
+
+    </tbody>
+</table>
+<span th:text="${'Всего товаров: '+products.size}"/>
+</div>
+</body>
+</html>

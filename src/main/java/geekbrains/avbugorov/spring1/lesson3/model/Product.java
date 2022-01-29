@@ -3,13 +3,13 @@ package geekbrains.avbugorov.spring1.lesson3.model;
 public class Product {
   private Long id;
   private String title;
-  private float price;
+  private Integer price;
 
   public Product(Long id) {
     this.id = id;
   }
 
-  public Product(Long id, String title, float price) {
+  public Product(Long id, String title, Integer price) {
     this.id = id;
     this.title = title;
     this.price = price;
@@ -23,8 +23,13 @@ public class Product {
     return title;
   }
 
-  public float getPrice() {
+  public Integer getPrice() {
     return price;
   }
+
+  public void setPrice(Integer price) {
+    this.price = price;
+  }
+
 
 }

@@ -5,9 +5,9 @@ import geekbrains.avbugorov.spring1.lesson3.model.Product;
 import java.util.List;
 
 public interface ProductRepository {
-  public List<Product> getAll();
+    public List<Product> getAll();
 
-  public void save(Product product);
+    public void save(Product product);
 
-  public Product returnProductById(long id);
+    public Product returnProductById(long id);
 }
