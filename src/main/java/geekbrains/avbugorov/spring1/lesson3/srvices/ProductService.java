@@ -1,39 +1,38 @@
 package geekbrains.avbugorov.spring1.lesson3.srvices;
 
+import geekbrains.avbugorov.spring1.lesson3.StartApplication;
+import geekbrains.avbugorov.spring1.lesson3.dao.ProductDao;
+import geekbrains.avbugorov.spring1.lesson3.model.Order;
 import geekbrains.avbugorov.spring1.lesson3.model.Product;
-import geekbrains.avbugorov.spring1.lesson3.repositories.ProductRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProductService {
-    private ProductRepositoryImpl productRepository;
+    final ProductDao productDao;
 
     @Autowired
-    public ProductService(ProductRepositoryImpl productRepository) {
-        this.productRepository = productRepository;
+    public ProductService(ProductDao productDao) {
+        this.productDao = productDao;
     }
 
-    public List<Product> returnAll() {
-        return productRepository.getAll();
-    }
-
-    public Product returnProductById(long id) {
-        return productRepository.returnProductById(id);
+    public List<Product> getAll() {
+        return productDao.getAll();
     }
 
     public void save(Product product) {
-        productRepository.save(product);
+        productDao.save(product);
     }
 
     public void update(Product product) {
-        productRepository.update(product);
+        productDao.update(product);
     }
 
-    public long getNextId() {
-        return returnAll().size() + 1;
+    public Product returnProductById(long id) {
+        return productDao.returnProductById(id);
     }
 
     public void incrementPrise(Long id, Integer increment) {
@@ -43,4 +42,8 @@ public class ProductService {
         update(changeableProduct);
     }
 
+    public List<Order> getOrderListByProductId(Long productId) {
+        return productDao.getOrderListByProductId(productId);
+    }
 }
+

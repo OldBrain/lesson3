@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>geekbrains..avbugorov.spring1.lesson3</groupId>
+	<groupId>geekbrains.avbugorov.spring1.lesson3</groupId>
 	<artifactId>lesson3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lesson3</name>

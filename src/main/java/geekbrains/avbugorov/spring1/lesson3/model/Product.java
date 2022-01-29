@@ -1,6 +1,7 @@
 package geekbrains.avbugorov.spring1.lesson3.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -14,11 +15,21 @@ public class Product {
     @Column(name = "price")
     private Integer price;
 
+    @OneToMany(mappedBy = "productOrder", fetch = FetchType.EAGER)
+    List<Order> orderListIdProduct;
+
     public Product() {
     }
 
-    public Product(Long id, String title, Integer price) {
-        this.id = id;
+    public List<Order> getOrderListIdProduct() {
+        return orderListIdProduct;
+    }
+
+    public void setOrderListIdProduct(List<Order> orders) {
+        this.orderListIdProduct = orders;
+    }
+
+    public Product(String title, Integer price) {
         this.title = title;
         this.price = price;
     }
@@ -45,5 +56,13 @@ public class Product {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return  "id=" + id +
+                ", Наименование='" + title + '\'' +
+                ", цена сегодня=" + price +
+                '}';
     }
 }

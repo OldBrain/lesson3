@@ -28,7 +28,7 @@ public class ProductsController {
     //  http://localhost:8189/app/all_products/
     @GetMapping("/all_products")
     public String returnAllProducts(Model model) {
-        model.addAttribute("products", productService.returnAll());
+        model.addAttribute("products", productService.getAll());
         return "products";
     }
 
@@ -39,7 +39,7 @@ public class ProductsController {
         if (id != null) {
             productService.incrementPrise(id, increment);
         }
-        model.addAttribute("products", productService.returnAll());
+        model.addAttribute("products", productService.getAll());
         return "edit_products";
     }
 
@@ -51,7 +51,7 @@ public class ProductsController {
 
     @PostMapping("/create")
     public String saveProduct(@RequestParam String title, @RequestParam Integer price) {
-        Product product = new Product(productService.getNextId(), title, price);
+        Product product = new Product(title, price);
         productService.save(product);
         return "redirect:/all_products";
     }
